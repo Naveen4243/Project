@@ -1,0 +1,34 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment folders (if any)
+venv/
+env/
+
+# Image files (if you don't want to track images)
+sample.webp
+received_image.webp
+
+# Base64 and temp files
+*.b64
+image.txt
+
+# Auth and sensitive files
+auth.json
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# VSCode settings (if you're using VSCode)
+.vscode/
+
+# Log files
+*.log
+
+# Other unwanted files
+*.bak
+*.tmp
+
