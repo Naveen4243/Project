@@ -13,7 +13,7 @@ This project was built as part of the **IIT Madras BSc Data Science program.**
 ---
 
 ## 📁 Project Structure
-tds-virtual-ta-scraper/
+project/
 
 ├── scrapers/
 
@@ -33,6 +33,16 @@ tds-virtual-ta-scraper/
 
 ├── auth.json
 
+├── main.py
+
+├── sample.webp
+
+├── image.txt
+
+├── received_image.webp
+
+├── LICENSE
+
 └── README.md
 
 
@@ -45,15 +55,15 @@ tds-virtual-ta-scraper/
 ```bash
 git clone https://github.com/Naveen4243/Project.git
 cd Project
-```
 
-2. **Install dependencies**
+```
+2. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. **Install Playwright Browsers (only needed once)**
+3. Install Playwright Browsers (only needed once)
 
 ```bash
 playwright install
@@ -62,7 +72,7 @@ playwright install
 ---
 
 ## 🚀 How to Use
-### ✅ Scrape Discourse Posts
+### 1. Scrape Discourse Posts
 Run:
 ```bash
 python scrapers/discourse_scraper.py
@@ -78,10 +88,10 @@ python scrapers/discourse_scraper.py
 
 After login, it’ll scrape and create:
 
-✅ discourse_posts.json — containing clean structured posts from 01 Jan 2025 to 14 Apr 2025.
+discourse_posts.json — containing clean structured posts from 01 Jan 2025 to 14 Apr 2025.
 
 
-### ✅ Scrape TDS Course Pages
+### 2. Scrape TDS Course Pages
 Run:
 
 ```bash
@@ -100,33 +110,56 @@ This will:
 
 ---
 
-## 📑 Configuration
-👉 BASE_URL and BASE_ORIGIN are set in html_scraper.py.
+## Create and Run the FastAPI-based Virtual TA API
+The API serves as a question-answer interface using the scraped metadata and supports optional image upload.
 
-👉 Output folder: markdown_files/
-
-👉 Metadata file: metadata.json
-
-👉 Auth config (optional for Discourse API): auth.json
-
----
-
-## 📝 Dependencies
-Listed in requirements.txt:
+1. Start the API server
 
 ```bash
-playwright
-beautifulsoup4
-markdownify
+uvicorn main:app --reload
 ```
 
----
+2. API Endpoints
 
-## 📌 Notes
-👉 Make sure to manually create the markdown_files/ folder if it doesn't exist. The script will auto-create it if missing.
+👉 GET /
+    Returns a welcome message.
 
-👉 Discourse scraper (discourse_scraper.py) is under development.
+👉 POST /api/
+    Accepts JSON body with:
+```bash
+{
 
+  "question": "Your question here",
+  
+  "image": "Optional base64-encoded image string"
+  
+}
+```
+
+3. API Behavior
+
+👉 The API searches the metadata entries for keywords matching the question text.
+
+👉 If an image is provided (base64 encoded), it saves the image locally as received_image.webp.
+
+👉 Responds with a JSON object containing:
+
+  👉 answer: a summary of relevant resources found
+
+  👉 links: list of matched metadata URLs and titles
+
+Example JSON response:
+```bash
+{
+  "answer": "I found 1 relevant resource(s) based on your question.",
+  "links": [
+    {
+      "url": "https://tds.s-anand.net/#/2025-01",
+      "text": "Tools in Data Science"
+    }
+  ]
+}
+```
 ---
 
 ## 📖 License
