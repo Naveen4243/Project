@@ -1,4 +1,7 @@
 providers:
+  - local-virtual-ta
+
+providerConfigs:
   local-virtual-ta:
     type: rest
     config:
@@ -15,8 +18,7 @@ providers:
 
 scenarios:
   - name: "Basic questions"
-    config:
-      provider: local-virtual-ta
+    provider: local-virtual-ta
     tests:
       - input:
           question: "Tools in Data Science"
