@@ -1,5 +1,5 @@
 providers:
-  - local-virtual-ta
+  - openai:gpt-3.5
 
 providerConfigs:
   local-virtual-ta:
