@@ -1,5 +1,5 @@
 providers:
-  - name: local-virtual-ta
+  local-virtual-ta:
     type: rest
     config:
       url: "http://127.0.0.1:8000/api/"
@@ -9,12 +9,14 @@ providers:
       body:
         question: "{{ question }}"
       response:
-        path: "$"    # root of response JSON
+        path: "$"
         answer_path: ".answer"
         links_path: ".links"
 
 scenarios:
   - name: "Basic questions"
+    config:
+      provider: local-virtual-ta
     tests:
       - input:
           question: "Tools in Data Science"
