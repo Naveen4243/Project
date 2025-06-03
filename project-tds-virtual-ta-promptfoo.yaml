@@ -1,5 +1,5 @@
 providers:
-  - openai:gpt-3.5
+  - local-virtual-ta
 
 providerConfigs:
   local-virtual-ta:
@@ -22,5 +22,6 @@ scenarios:
     tests:
       - input:
           question: "Tools in Data Science"
-        output:
-          answer: "I found 1 relevant resource(s) based on your question."
+        assert:
+          answer:
+            equals: "I found 1 relevant resource(s) based on your question."
