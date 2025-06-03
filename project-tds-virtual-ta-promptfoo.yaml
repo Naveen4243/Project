@@ -1,0 +1,17 @@
+providers:
+  - id: virtual-ta-api
+    config:
+      url: http://127.0.0.1:8000/api/
+
+scenarios:
+  - name: "Test Tools Question"
+    input:
+      question: "What are the tools used in data science?"
+    expected_output_contains: "Tools"
+
+  - name: "Test Image Upload"
+    input:
+      question: "Is this image relevant?"
+      image: "sample.webp"
+    expected_output_contains: "I found"
+
