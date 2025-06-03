@@ -1,13 +1,9 @@
 description: "TDS Virtual TA Project Sample (but not the actual evaluation) Questions"
 
-prompts:
-  - "{{ question }}"
-
 providers:
-  - id: local-api
-    type: custom
+  - id: https
     config:
-      url: http://127.0.0.1:8000/api/
+      url: http://127.0.0.1:8000/api/ # Replace this with your API endpoint
       method: POST
       headers:
         Content-Type: application/json
@@ -18,6 +14,7 @@ providers:
         }
       transformResponse: json
 
+# Ensure JSON schema
 defaultTest:
   assert:
     - type: is-json
@@ -38,7 +35,7 @@ defaultTest:
 tests:
   - vars:
       question: The question asks to use gpt-3.5-turbo-0125 model but the ai-proxy provided by Anand sir only supports gpt-4o-mini. So should we just use gpt-4o-mini or use the OpenAI API for gpt3.5 turbo?
-      image: file://sample.webp
+      image: file://project-tds-virtual-ta-q1.webp
       link: https://discourse.onlinedegree.iitm.ac.in/t/ga5-question-8-clarification/155939
     assert:
       - type: llm-rubric
@@ -58,7 +55,6 @@ tests:
       - type: contains
         transform: JSON.stringify(output.links)
         value: https://discourse.onlinedegree.iitm.ac.in/t/ga4-data-sourcing-discussion-thread-tds-jan-2025/165959
-
   - vars:
       question: I know Docker but have not used Podman before. Should I use Docker for this course?
     assert:
@@ -71,7 +67,6 @@ tests:
       - type: contains
         transform: JSON.stringify(output.links)
         value: https://tds.s-anand.net/#/docker
-
   - vars:
       question: When is the TDS Sep 2025 end-term exam?
     assert:
