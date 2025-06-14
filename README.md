@@ -29,6 +29,12 @@ project/
 
 ├── metadata.json
 
+├── package-lock.json
+
+├── package.json
+
+├── project-tds-virtual-ta-promptfoo.yaml
+
 ├── requirements.txt
 
 ├── auth.json
