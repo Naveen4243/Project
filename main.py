@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 from typing import Optional, List
 from fastapi.responses import JSONResponse
@@ -50,9 +50,9 @@ class QueryResponse(BaseModel):
     answer: str
     links: List[Link]
 
-# Root endpoint — only GET allowed
-@app.get("/")
-def read_root():
+# Root endpoint — allow both GET and POST
+@app.api_route("/", methods=["GET", "POST"])
+async def root(request: Request):
     return JSONResponse(content={"message": "Welcome to TDS Virtual TA API!"})
 
 # /api/ endpoint — POST only
