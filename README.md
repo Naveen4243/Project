@@ -13,44 +13,27 @@ This project was built as part of the **IIT Madras BSc Data Science program.**
 ---
 
 ## 📁 Project Structure
+```
 project/
-
 ├── scrapers/
-
 │ ├── discourse_scraper.py
-
 │ └── html_scraper.py
-
 ├── markdown_files/
-
 │ └── Tools_in_Data_Science.md
-
 ├── discourse_posts.json
-
 ├── metadata.json
-
 ├── package-lock.json
-
 ├── package.json
-
 ├── project-tds-virtual-ta-promptfoo.yaml
-
 ├── requirements.txt
-
 ├── auth.json
-
 ├── main.py
-
 ├── sample.webp
-
 ├── image.txt
-
 ├── received_image.webp
-
 ├── LICENSE
-
 └── README.md
-
+```
 
 ---
 
@@ -141,6 +124,14 @@ Accepts JSON body with:
 }
 ```
 
+---
+
+## Evaluation part
+Load the question and expected URL in YAML and 
+Run:
+```bash
+npx -y promptfoo eval --config project-tds-virtual-ta-promptfoo.yaml
+```
 ---
 
 ## 📌 Notes
