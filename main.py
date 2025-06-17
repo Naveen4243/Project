@@ -53,7 +53,13 @@ class QueryResponse(BaseModel):
 # Root endpoint — allow both GET and POST
 @app.api_route("/", methods=["GET", "POST"])
 async def root(request: Request):
-    return JSONResponse(content={"message": "Welcome to TDS Virtual TA API!"})
+    return JSONResponse(
+        content={
+            "answer": "Welcome to TDS Virtual TA API!",
+            "links": []
+        },
+        status_code=200
+    )
 
 # /api/ endpoint — POST only
 @app.post("/api/", response_model=QueryResponse)
