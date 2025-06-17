@@ -1,38 +1,21 @@
-# Python cache files
+# Byte-compiled / cache files
 __pycache__/
-*.py[cod]
-*$py.class
-
-# Environment / virtualenv
-.env
-.venv/
-env/
-venv/
-
-# VSCode settings
-.vscode/
-
-# Logs and runtime files
-*.log
-*.sqlite3
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Sensitive or runtime files
-auth.json            # keep your credentials out of repo
-received_image.webp  # generated at runtime, no need to track
-
-# Base64 or image temp files (optional)
-*.b64
-image.txt
-
-# Byte-compiled / optimized / DLL files
 *.pyc
 *.pyo
 *.pyd
 
-# Misc
-.idea/
-*.swp
+# Virtual environment
+venv/
+env/
+
+# Image files and temp data
+*.webp
+*.b64
+*.txt
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Evaluation cache (Promptfoo cache)
+promptfoo-cache/
