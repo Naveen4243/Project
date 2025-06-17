@@ -22,16 +22,10 @@ project/
 │ └── Tools_in_Data_Science.md
 ├── discourse_posts.json
 ├── metadata.json
-├── package-lock.json
-├── package.json
-├── project-tds-virtual-ta-promptfoo.yaml
-├── requirements.txt
-├── auth.json
 ├── main.py
-├── sample.webp
-├── image.txt
-├── received_image.webp
-├── LICENSE
+├── requirements.txt
+├── project-tds-virtual-ta-promptfoo.yaml
+├── .gitignore
 └── README.md
 ```
 
@@ -103,13 +97,19 @@ This will:
 
 The API serves as a question-answer interface using the scraped metadata and supports optional image upload.
 
-1. **Start the API server**
+1. **set the API key**
+
+```bash
+set OPENAI_API_KEY=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
+```
+
+2. **Start the API server**
 
  ```bash
 uvicorn main:app --reload
 ```
 
-2. **API Endpoints**
+3. **API Endpoints**
 
 GET /
 Returns a welcome message.
@@ -127,7 +127,14 @@ Accepts JSON body with:
 ---
 
 ## Evaluation part
-Load the question and expected URL in YAML and 
+
+1. **set the API key**
+
+```bash
+set OPENAI_API_KEY=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
+```
+
+2. Load the question and expected URL in YAML and 
 Run:
 ```bash
 npx -y promptfoo eval --config project-tds-virtual-ta-promptfoo.yaml
@@ -135,6 +142,7 @@ npx -y promptfoo eval --config project-tds-virtual-ta-promptfoo.yaml
 ---
 
 ## 📌 Notes
+👉 Make sure you are running API app (uvicorn main:app --reload) and YAML file (npx -y promptfoo eval --config project-tds-virtual-ta-promptfoo.yaml) in separate terminals.
 
 👉 Make sure the metadata.json and markdown_files/ are present before running the API.
 
