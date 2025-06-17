@@ -100,7 +100,7 @@ The API serves as a question-answer interface using the scraped metadata and sup
 1. **Set the API key**
 
 ```bash
-set OPENAI_API_KEY=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
+set OPENAI_API_KEY=
 ```
 
 2. **Start the API server**
@@ -131,7 +131,7 @@ Accepts JSON body with:
 1. **Set the API key**
 
 ```bash
-set OPENAI_API_KEY=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
+set OPENAI_API_KEY=
 ```
 
 2. Load the question and expected URL in YAML and 
