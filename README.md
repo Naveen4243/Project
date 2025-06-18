@@ -100,19 +100,13 @@ This will:
 
 The API serves as a question-answer interface using the scraped metadata and supports optional image upload.
 
-1. **Set the API key**
-
-```bash
-set OPENAI_API_KEY=
-```
-
-2. **Start the API server**
+1. **Start the API server**
 
  ```bash
 uvicorn main:app --reload
 ```
 
-3. **API Endpoints**
+2. **API Endpoints**
 
 GET /
 Returns a welcome message.
@@ -123,7 +117,6 @@ Accepts JSON body with:
 ```json
 {
   "question": "Your question here",
-  "image": "Optional base64-encoded image string"
 }
 ```
 
@@ -131,14 +124,8 @@ Accepts JSON body with:
 
 ## Evaluation part
 
-1. **Set the API key**
-
-```bash
-set OPENAI_API_KEY=
-```
-
-2. Load the question and expected URL in YAML and 
-Run:
+1. Load the question and expected URL in YAML and
+2. 
 ```bash
 npx -y promptfoo eval --config project-tds-virtual-ta-promptfoo.yaml
 ```
@@ -151,7 +138,7 @@ npx -y promptfoo eval --config project-tds-virtual-ta-promptfoo.yaml
 
 👉 The API currently performs keyword matching in the metadata titles to find relevant resources.
 
-👉 The image upload is optional and stored as received_image.webp for further development.
+👉 The entire README.md file will tell you how to run this locally.
 
 ---
 
