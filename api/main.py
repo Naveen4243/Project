@@ -54,6 +54,10 @@ async def root(request: Request):
         content={"answer": "Welcome to TDS Virtual TA API!", "links": []},
         status_code=200
     )
+    
+@app.get("/")
+def read_root():
+    return {"message": "FastAPI running on Vercel!"}
 
 @app.post("/api/", response_model=QueryResponse)
 async def answer_question(query: QueryRequest):
