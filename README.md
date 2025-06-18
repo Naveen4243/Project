@@ -27,6 +27,7 @@ project/
 │ ├── requirements.txt
 │ └── main.py
 ├── project-tds-virtual-ta-promptfoo.yaml
+├── auth.json
 ├── .gitignore
 └── README.md
 ```
