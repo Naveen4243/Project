@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+rapidfuzz
+playwright
+beautifulsoup4
+markdownify
+aiofiles
+python-multipart
+mangum
