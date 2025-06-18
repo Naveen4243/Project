@@ -9,9 +9,6 @@ import os
 from rapidfuzz import fuzz
 import re
 
-# Load API key from environment variable (for future use if needed)
-API_KEY = os.getenv("API_KEY")
-
 app = FastAPI()
 
 # Enable CORS for all origins
@@ -23,19 +20,23 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Locate JSON files relative to this file
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+metadata_path = os.path.join(BASE_DIR, "metadata.json")
+discourse_path = os.path.join(BASE_DIR, "discourse_posts.json")
+
 # Load metadata and discourse posts at startup
-if not os.path.exists("metadata.json"):
-    raise FileNotFoundError("metadata.json not found — please run html_scraper.py first!")
-if not os.path.exists("discourse_posts.json"):
-    raise FileNotFoundError("discourse_posts.json not found — please run discourse_scraper.py first!")
+if not os.path.exists(metadata_path):
+    raise FileNotFoundError("metadata.json not found — please upload it.")
 
-with open("metadata.json", "r", encoding="utf-8") as f:
+if not os.path.exists(discourse_path):
+    raise FileNotFoundError("discourse_posts.json not found — please upload it.")
+
+with open(metadata_path, "r", encoding="utf-8") as f:
     metadata = json.load(f)
-print(f"Loaded {len(metadata)} course content entries.")
 
-with open("discourse_posts.json", "r", encoding="utf-8") as f:
+with open(discourse_path, "r", encoding="utf-8") as f:
     discourse_posts = json.load(f)
-print(f"Loaded {len(discourse_posts)} Discourse posts.")
 
 # Pydantic models
 class QueryRequest(BaseModel):
@@ -50,7 +51,7 @@ class QueryResponse(BaseModel):
     answer: str
     links: List[Link]
 
-# Root endpoint — allow both GET and POST
+# Root endpoint
 @app.api_route("/", methods=["GET", "POST"])
 async def root(request: Request):
     return JSONResponse(
@@ -72,9 +73,9 @@ async def answer_question(query: QueryRequest):
     if query.image:
         try:
             image_data = base64.b64decode(query.image)
-            with open("received_image.webp", "wb") as f:
+            image_path = os.path.join(BASE_DIR, "received_image.webp")
+            with open(image_path, "wb") as f:
                 f.write(image_data)
-            print("Image received and saved.")
         except Exception as e:
             raise HTTPException(status_code=400, detail=f"Invalid image data: {str(e)}")
 
