@@ -8,3 +8,4 @@ markdownify
 aiofiles
 python-multipart
 base64
+mangum
