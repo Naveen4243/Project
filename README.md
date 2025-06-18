@@ -23,8 +23,9 @@ project/
 ├── api/
 │ ├── discourse_posts.json
 │ ├── metadata.json
+│ ├── asgi.py
+│ ├── requirements.txt
 │ └── main.py
-├── requirements.txt
 ├── project-tds-virtual-ta-promptfoo.yaml
 ├── .gitignore
 └── README.md
