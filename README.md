@@ -21,9 +21,9 @@ project/
 ├── markdown_files/
 │ └── Tools_in_Data_Science.md
 ├── api/
+│ ├── discourse_posts.json
+│ ├── metadata.json
 │ └── main.py
-├── discourse_posts.json
-├── metadata.json
 ├── requirements.txt
 ├── project-tds-virtual-ta-promptfoo.yaml
 ├── .gitignore
